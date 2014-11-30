@@ -27,6 +27,8 @@ module.exports = function (callback) {
     .parse(process.argv);
 
   var apk = program.args[0];
+  var destPath = program.args[1];
+  
   callback = callback || success;
 
   if (!apk) {
@@ -90,19 +92,23 @@ module.exports = function (callback) {
           process.exit(0);
         }
         else {
-          createExtension(text, chromePerms);
+          createExtension(text, chromePerms, destPath);
         }
       })
       .on('close', function () {
         process.exit(0);
       });
     } else {
-      createExtension(packageName, chromePerms);
+      createExtension(packageName, chromePerms, destPath);
     }
 
-    function createExtension(packageName, chromePerms) {
+    function createExtension(packageName) {
       var templatePath = path.join(__dirname, '_template');
-      var appPath = path.join(packageName + '.android');
+      var appPath = path.join(destPath, packageName + '.android');
+
+      if(fs.existsSync(appPath)){
+        deleteFolderRecursive(appPath);
+      }
 
       // TODO: refactor this if needed in the future
       ncp(templatePath, appPath, function (err) {
@@ -148,6 +154,23 @@ module.exports = function (callback) {
         callback(appPath);
       });
     }
+    
+    function deleteFolderRecursive(dirpath) {
+        var files = [];
+        if( fs.existsSync(dirpath) ) {
+            files = fs.readdirSync(dirpath);
+            files.forEach(function(file,index){
+                var curPath = dirpath + "/" + file;
+                if(fs.lstatSync(curPath).isDirectory()) { // recurse
+                    deleteFolderRecursive(curPath);
+                } else { // delete file
+                    fs.unlinkSync(curPath);
+                }
+            });
+            fs.rmdirSync(dirpath);
+        }
+    };      
+    
   });
 
 };
