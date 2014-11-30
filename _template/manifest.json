@@ -29,11 +29,6 @@
       "scopes": [  ]
    },
    "offline_enabled": true,
-   "permissions": [ "gcm", {
-      "socket": [ "tcp-connect", "tcp-listen", "udp-bind", "udp-send-to", "resolve-host" ]
-   }, "unlimitedStorage", "notifications", "clipboardRead", {
-      "fileSystem": [ "write" ]
-   }, "https://clients2.google.com/", "videoCapture", "clipboardWrite", "identity.email", "alarms", "storage", "identity", "audioCapture" ],
    "requirements": {
       "3D": {
          "features": [ "webgl" ]

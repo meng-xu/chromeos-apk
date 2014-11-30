@@ -9,6 +9,8 @@ var rl = readline.createInterface(process.stdin, process.stdout);
 
 var parseApk = require('./lib/parseApk');
 
+var permMap = require('./perm-map.json');
+
 function success(appPath) {
   console.log(chalk.green('Directory "', appPath, '" created. Copy that directory onto your Chromebook and use "Load unpacked extension" to load the application.'));
   process.exit(0);
@@ -38,7 +40,30 @@ module.exports = function (callback) {
 
     var packageName = null;
 
+    var chromePerms = [];
+    var chromeManifestPerms = [];
+
     try {
+      var androidPerms = data.usesPermissions;
+      
+      androidPerms.forEach(function(androidPerm){
+          if(androidPerm.name in permMap.permission){
+              permMap.permission[androidPerm.name].forEach(function(chromePerm){
+                  if(chromePerms.indexOf(chromePerm)===-1){
+                      chromePerms.push(chromePerm);
+                  }
+              });
+          } 
+          if(androidPerm.name in permMap.manifest){
+              permMap.manifest[androidPerm.name].forEach(function(chromeManifestPerm){
+                  if(chromeManifestPerms.indexOf(chromeManifestPerm)===-1){
+                      chromeManifestPerms.push(chromeManifestPerm);
+                  }
+              });
+          }
+      });
+      
+      
       packageName = data.package;
     } catch (e) {
       console.log(chalk.yellow('Failed to parse package name in the APK.'));
@@ -61,17 +86,17 @@ module.exports = function (callback) {
           process.exit(0);
         }
         else {
-          createExtension(text);
+          createExtension(text, chromePerms);
         }
       })
       .on('close', function () {
         process.exit(0);
       });
     } else {
-      createExtension(packageName);
+      createExtension(packageName, chromePerms);
     }
 
-    function createExtension(packageName) {
+    function createExtension(packageName, chromePerms) {
       var templatePath = path.join(__dirname, '_template');
       var appPath = path.join(packageName + '.android');
 
@@ -105,6 +130,14 @@ module.exports = function (callback) {
         if (program.scale) {
           manifest.arc_metadata.resize = 'scale';
         }
+
+        manifest.permissions = chromePerms;
+
+        chromeManifestPerms.forEach(function(entry){
+            Object.keys(entry).forEach(function(key){
+                manifest[key] = entry[key];
+            });
+        });
 
         fs.writeFileSync(path.join(appPath, 'manifest.json'), JSON.stringify(manifest, null, 2));
         fs.writeFileSync(path.join(appPath, '_locales', 'en', 'messages.json'), JSON.stringify(messages, null, 2));

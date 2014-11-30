@@ -1,0 +1,20 @@
+{
+  "permission":
+  {
+    "android.permission.SYSTEM_ALERT_WINDOW": ["alarms", "notifications"],
+    "android.permission.CAMERA": ["videoCapture"],
+    "android.permission.INTERNET": [{"socket":["tcp-connect","tcp-listen","udp-bind","udp-send-to","resolve-host"]}],
+    "android.permission.NFC": ["copresence"],
+    "android.permission.RECORD_AUDIO": ["audio", "audioCapture"],
+    "android.permission.WRITE_EXTERNAL_STORAGE": ["storage", "unlimitedStorage"],
+    "android.permission.ACCESS_FINE_LOCATION": ["location", "geolocation"],
+    "android.permission.AUTHENTICATE_ACCOUNTS": ["identity"],
+    "android.permission.USE_CREDENTIALS": ["identity"],
+    "android.permission.MANAGE_ACCOUNTS": ["identity"]
+  },
+  "manifest":
+  {
+    "android.permission.BLUETOOTH": [{"bluetooth": {"socket": true, "low_energy": true}}],
+    "android.permission.BLUETOOTH_ADMIN": [{"bluetooth": {"socket": true, "low_energy": true}}]
+  }
+}
