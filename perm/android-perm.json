@@ -1,0 +1,88 @@
+{
+   "android.permission-group.AFFECTS_BATTERY": [
+      "android.permission.CHANGE_WIFI_MULTICAST_STATE"
+   ],
+   "android.permission-group.BLUETOOTH_NETWORK": [
+      "android.permission.BLUETOOTH",
+      "android.permission.BLUETOOTH_ADMIN"
+   ],
+   "android.permission-group.DISPLAY": [
+      "android.permission.SYSTEM_ALERT_WINDOW"
+   ],
+   "android.permission-group.CAMERA": [
+      "android.permission.CAMERA"
+   ],
+   "android.permission-group.MESSAGES": [
+      "android.permission.SEND_SMS",
+      "android.permission.RECEIVE_SMS",
+      "android.permission.RECEIVE_MMS",
+      "android.permission.READ_CELL_BROADCASTS",
+      "android.permission.READ_SMS",
+      "android.permission.WRITE_SMS",
+      "android.permission.RECEIVE_WAP_PUSH"
+   ],
+   "android.permission-group.NETWORK": [
+      "android.permission.INTERNET",
+      "android.permission.CHANGE_WIFI_STATE",
+      "android.permission.CHANGE_WIMAX_STATE",
+      "android.permission.NFC"
+   ],
+   "android.permission-group.MICROPHONE": [
+      "android.permission.RECORD_AUDIO"
+   ],
+   "android.permission-group.STORAGE": [
+      "android.permission.WRITE_EXTERNAL_STORAGE"
+   ],
+   "android.permission-group.SCREENLOCK": [
+      "android.permission.DISABLE_KEYGUARD"
+   ],
+   "android.permission-group.PERSONAL_INFO": [
+      "android.permission.READ_PROFILE",
+      "android.permission.WRITE_PROFILE",
+      "android.permission.READ_CALENDAR",
+      "android.permission.WRITE_CALENDAR"
+   ],
+   "android.permission-group.VOICEMAIL": [
+      "com.android.voicemail.permission.ADD_VOICEMAIL"
+   ],
+   "android.permission-group.BOOKMARKS": [
+      "com.android.browser.permission.READ_HISTORY_BOOKMARKS",
+      "com.android.browser.permission.WRITE_HISTORY_BOOKMARKS"
+   ],
+   "android.permission-group.SOCIAL_INFO": [
+      "android.permission.READ_CONTACTS",
+      "android.permission.WRITE_CONTACTS",
+      "android.permission.READ_CALL_LOG",
+      "android.permission.WRITE_CALL_LOG",
+      "android.permission.READ_SOCIAL_STREAM",
+      "android.permission.WRITE_SOCIAL_STREAM"
+   ],
+   "android.permission-group.APP_INFO": [
+      "android.permission.GET_TASKS"
+   ],
+   "android.permission-group.LOCATION": [
+      "android.permission.ACCESS_FINE_LOCATION",
+      "android.permission.ACCESS_COARSE_LOCATION"
+   ],
+   "android.permission-group.ACCOUNTS": [
+      "android.permission.AUTHENTICATE_ACCOUNTS",
+      "android.permission.USE_CREDENTIALS",
+      "android.permission.MANAGE_ACCOUNTS"
+   ],
+   "android.permission-group.PHONE_CALLS": [
+      "android.permission.PROCESS_OUTGOING_CALLS",
+      "android.permission.READ_PHONE_STATE",
+      "android.permission.CALL_PHONE",
+      "android.permission.USE_SIP"
+   ],
+   "android.permission-group.USER_DICTIONARY": [
+      "android.permission.READ_USER_DICTIONARY"
+   ],
+   "android.permission-group.SYSTEM_TOOLS": [
+      "android.permission.ACCESS_MOCK_LOCATION",
+      "com.android.launcher.permission.INSTALL_SHORTCUT",
+      "com.android.launcher.permission.UNINSTALL_SHORTCUT",
+      "android.permission.SUBSCRIBED_FEEDS_WRITE",
+      "android.permission.CLEAR_APP_CACHE"
+   ]
+}

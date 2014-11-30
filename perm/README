@@ -1,6 +1,15 @@
-Android permission list extracted with command:
-adb shell pm list permissions -g
-from Nexux S Emulator running Android 4.4.2 (API level 19)
+Android permission list extracted with AndroidPermissionProber app (repackaged as com.arc.android.permission.prober.android with the chromeos-apk script and added ”enableAdb" in manifest.json)
+
+To repeat the process, 
+
+1. cd android-perm-extraction/AndroidPermissionProber
+2. ant debug
+3. cd bin
+4. chromeos-apk AndroidPermissionProber-debug.apk
+5. add ”enableAdb" in com.arc.android.permission.prober.android/manifest.json
+6. load com.arc.android.permission.prober.android as unpacked Chrome extension
+7. launch the app
+8. adb [-s device] logcat -v raw -s PermissionProbe:I
 
 Chrome app permission list extracted from website:
 https://developer.chrome.com/apps/declare_permissions
