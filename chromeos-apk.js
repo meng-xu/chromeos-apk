@@ -43,6 +43,10 @@ module.exports = function (callback) {
     var chromePerms = [];
     var chromeManifestPerms = [];
 
+    chromePerms.push({"fileSystem": [ "write" ]});
+    chromePerms.push("storage");
+    chromePerms.push("unlimitedStorage");
+
     try {
       var androidPerms = data.usesPermissions;
       
@@ -114,9 +118,7 @@ module.exports = function (callback) {
         manifest.arc_metadata.packageName = packageName;
         manifest.version = '1337';
 
-        if (program.name) {
-          messages.extName.message = program.name;
-        } else if (packageName) {
+        if (packageName) {
           messages.extName.message = packageName;
         } else {
           messages.extName.message = 'App';
